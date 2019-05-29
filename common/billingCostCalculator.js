@@ -2,7 +2,7 @@ const commerceUtils = require('./commerceUtils');
 var consumptionUtils = require('./consumptionUtils');
 
 module.exports = class BillingCostCalculator {
-    constructor(clientId, clientSecret, tenantId, subscriptionId, offerId, currency = "USD", locale = "en-US", regionInfo = "US") {
+    constructor(clientId, clientSecret, tenantId, subscriptionId, offerId, currency = "EUR", locale = "en-US", regionInfo = "US") {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.tenantId = tenantId;
