@@ -59,7 +59,8 @@ class ConsumptionUtils {
                         meterDescription: rate.unit + " of " + (rate.meterSubCategory ? rate.meterSubCategory : rate.meterCategory),
                         usageStartTime: consumptionItem.usageStartTime,
                         usageEndTime: consumptionItem.usageEndTime,
-                        resourceGroup: rg ? rg[1] : ''
+                        resourceGroup: rg ? rg[1] : '',
+                        resourcename: consumptionItem.instanceName
                     }
                 );
             }
