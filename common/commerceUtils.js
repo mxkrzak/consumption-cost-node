@@ -34,7 +34,6 @@ class CommerceUtils {
             startDate.setUTCHours(0, 0, 0, 0);
         }
         defaultUsageOptions.aggregationGranularity = granularity;
-        context.log()
         return client.usageAggregates.list(startDate, endDate, defaultUsageOptions).then((result) => {
           console.log("The result is:");
           console.log(result);
