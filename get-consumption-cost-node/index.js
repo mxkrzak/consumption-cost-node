@@ -24,12 +24,14 @@ function getParams(req) {
 module.exports = function(context, req) {
     var creds = getCreds();
     var costCalculator = new BillingCostCalculator(creds.clientId, creds.clientSecret, creds.tenantId, creds.subscriptionId, creds.offerId);
-    
+
     var params = getParams(req);
-    
+
     costCalculator.getCost(context, params.filter, params.granularity, params.startDate, params.endDate, params.detailed)
     .then(res => {
         context.res = res;
+        context.bindings.outputBlob1 = res;
+        context.log('Data saved to Storage Account');
         context.done();
     })
     .catch(error=>{
