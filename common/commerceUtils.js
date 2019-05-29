@@ -14,7 +14,7 @@ class CommerceUtils {
             .loginWithServicePrincipalSecret(clientId, clientSecret, tenantId);
     }
 
-    getRates(credentials, subscriptionId, offerId, currency = "EUR", locale = "en-US", regionInfo = "US") {
+    getRates(credentials, subscriptionId, offerId, currency = "EUR", locale = "en-US", regionInfo = "CZ") {
         const client = new CommerceManagement(credentials, subscriptionId);
         return client.rateCard.get("OfferDurableId eq '" + offerId + "' and Currency eq '" + currency + "' and Locale eq '" + locale + "' and RegionInfo eq '" + regionInfo + "'")
             .then(info => {
