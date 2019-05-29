@@ -14,7 +14,7 @@ class CommerceUtils {
             .loginWithServicePrincipalSecret(clientId, clientSecret, tenantId);
     }
 
-    getRates(credentials, subscriptionId, offerId, currency = "USD", locale = "en-US", regionInfo = "US") {
+    getRates(credentials, subscriptionId, offerId, currency = "EUR", locale = "en-US", regionInfo = "US") {
         const client = new CommerceManagement(credentials, subscriptionId);
         return client.rateCard.get("OfferDurableId eq '" + offerId + "' and Currency eq '" + currency + "' and Locale eq '" + locale + "' and RegionInfo eq '" + regionInfo + "'")
             .then(info => {
@@ -34,7 +34,11 @@ class CommerceUtils {
             startDate.setUTCHours(0, 0, 0, 0);
         }
         defaultUsageOptions.aggregationGranularity = granularity;
-        return client.usageAggregates.list(startDate, endDate, defaultUsageOptions);
+        context.log()
+        return client.usageAggregates.list(startDate, endDate, defaultUsageOptions).then((result) => {
+          console.log("The result is:");
+          console.log(result);
+        });
     }
 }
 
